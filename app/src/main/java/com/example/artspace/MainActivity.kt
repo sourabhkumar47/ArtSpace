@@ -8,6 +8,7 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -50,8 +51,10 @@ fun ArtSpace() {
         TextBox(R.string.title)
         TextBox(R.string.subHeading)
 
-    }
+        Spacer(Modifier.height(16.dp))
 
+        ButtonRow()
+    }
 }
 
 @Composable
@@ -78,18 +81,31 @@ fun TextBox(
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Text(
             text = stringResource(label),
             fontSize = 24.sp
         )
-
-//        Text(
-//            text = stringResource(R.string.subHeading),
-//            fontSize = 15.sp
-//        )
     }
+}
 
+@Composable
+fun ButtonRow() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Button(onClick = {}) {
+            Text(text = "Previous")
+        }
+
+        Spacer(Modifier.width(16.dp))
+
+        Button(onClick = {}) {
+            Text(text = "Next")
+        }
+    }
 }
 
 @Preview(showBackground = true)
