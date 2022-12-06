@@ -1,7 +1,6 @@
 package com.example.artspace
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
@@ -61,12 +60,13 @@ fun ArtSpace() {
 fun image(
     modifier: Modifier = Modifier
 ) {
+
     Image(
         painter = painterResource(id = R.drawable.pexels_james_wheeler_1598073),
         contentDescription = null,
         modifier
             .clip(
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(16.dp)
             )
             .fillMaxWidth()
     )
@@ -92,6 +92,7 @@ fun TextBox(
 fun ButtonRow() {
     Row(
         modifier = Modifier
+            .fillMaxSize()
             .fillMaxWidth()
             .fillMaxHeight(),
         horizontalArrangement = Arrangement.Center
@@ -103,6 +104,7 @@ fun ButtonRow() {
         Spacer(Modifier.width(16.dp))
 
         Button(onClick = {}) {
+            Modifier.width(100.dp)
             Text(text = "Next")
         }
     }
