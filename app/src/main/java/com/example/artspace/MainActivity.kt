@@ -11,7 +11,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,6 +41,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpace() {
+
+    var currentImage by remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier.padding(16.dp)
     ) {
@@ -103,12 +106,15 @@ fun ButtonRow() {
 
         Spacer(Modifier.width(16.dp))
 
-        Button(onClick = {}) {
+        Button(onClick = {
+
+        }) {
             Modifier.width(100.dp)
             Text(text = "Next")
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
