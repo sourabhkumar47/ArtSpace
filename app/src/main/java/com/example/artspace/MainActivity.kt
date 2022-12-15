@@ -1,5 +1,6 @@
 package com.example.artspace
 
+import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -40,14 +41,37 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ArtSpace() {
+fun ArtSpace(modifier: Modifier = Modifier) {
 
-    var currentImage by remember { mutableStateOf("") }
+    var currentImage by remember { mutableStateOf(1) }
+
+    var img = when (currentImage) {
+        1 -> R.drawable.a__1_
+        2 -> R.drawable.a__2_
+        3 -> R.drawable.a__3_
+        4 -> R.drawable.a__4_
+        5 -> R.drawable.a__5_
+        6 -> R.drawable.a__6_
+        7 -> R.drawable.a__7_
+        else -> R.drawable.pexels_james_wheeler_1598073
+    }
 
     Column(
-        modifier = Modifier.padding(16.dp)
+        modifier = modifier.padding(16.dp)
+
     ) {
-        image()
+//        image()
+
+        Image(
+            painter = painterResource(id = img),
+            contentDescription = currentImage.toString(),
+            modifier
+                .clip(
+                    shape = RoundedCornerShape(16.dp)
+                )
+                .fillMaxWidth()
+        )
+
         Spacer(Modifier.height(16.dp))
 
         TextBox(R.string.title)
@@ -55,25 +79,45 @@ fun ArtSpace() {
 
         Spacer(Modifier.height(16.dp))
 
-        ButtonRow()
+//        ButtonRow()
+
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Button(onClick = { currentImage }) {
+                Text(text = "Previous")
+            }
+
+            Spacer(Modifier.width(16.dp))
+
+            Button(onClick = {
+                currentImage = (1..7).random()
+            }) {
+                Modifier.width(100.dp)
+                Text(text = "Next")
+            }
+        }
     }
 }
 
-@Composable
-fun image(
-    modifier: Modifier = Modifier
-) {
-
-    Image(
-        painter = painterResource(id = R.drawable.pexels_james_wheeler_1598073),
-        contentDescription = null,
-        modifier
-            .clip(
-                shape = RoundedCornerShape(16.dp)
-            )
-            .fillMaxWidth()
-    )
-}
+//@Composable
+//fun image(
+//    modifier: Modifier = Modifier,
+//) {
+//    Image(
+//        painter = painterResource(id = currentImage),
+//        contentDescription = null,
+//        modifier
+//            .clip(
+//                shape = RoundedCornerShape(16.dp)
+//            )
+//            .fillMaxWidth()
+//    )
+//}
 
 @Composable
 fun TextBox(
@@ -91,29 +135,42 @@ fun TextBox(
     }
 }
 
-@Composable
-fun ButtonRow() {
-    Row(
-        modifier = Modifier
-            .fillMaxSize()
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        horizontalArrangement = Arrangement.Center
-    ) {
-        Button(onClick = {}) {
-            Text(text = "Previous")
-        }
-
-        Spacer(Modifier.width(16.dp))
-
-        Button(onClick = {
-
-        }) {
-            Modifier.width(100.dp)
-            Text(text = "Next")
-        }
-    }
-}
+//@Composable
+//public fun ButtonRow() {
+//    var currentImage by remember { mutableStateOf(1) }
+//
+//    var img = when (currentImage) {
+//        1 -> R.drawable.a__1_
+//        2 -> R.drawable.a__2_
+//        3 -> R.drawable.a__3_
+//        4 -> R.drawable.a__4_
+//        5 -> R.drawable.a__5_
+//        6 -> R.drawable.a__6_
+//        7 -> R.drawable.a__7_
+//        else -> R.drawable.pexels_james_wheeler_1598073
+//    }
+//
+//    Row(
+//        modifier = Modifier
+//            .fillMaxSize()
+//            .fillMaxWidth()
+//            .fillMaxHeight(),
+//        horizontalArrangement = Arrangement.Center
+//    ) {
+//        Button(onClick = { currentImage = (1..7).random() }) {
+//            Text(text = "Previous")
+//        }
+//
+//        Spacer(Modifier.width(16.dp))
+//
+//        Button(onClick = {
+//            currentImage - 1
+//        }) {
+//            Modifier.width(100.dp)
+//            Text(text = "Next")
+//        }
+//    }
+//}
 
 
 @Preview(showBackground = true)
