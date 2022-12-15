@@ -1,6 +1,6 @@
 ## Art Space App
 
-This app show differetn art in image composable along with feature to call NEXT and PREVIOUS image.
+This app show different art in image composable along with feature to call NEXT and PREVIOUS image.
 
 ## Screenshots
 
