@@ -60,8 +60,6 @@ fun ArtSpace(modifier: Modifier = Modifier) {
         modifier = modifier.padding(16.dp)
 
     ) {
-//        image()
-
         Image(
             painter = painterResource(id = img),
             contentDescription = currentImage.toString(),
@@ -78,8 +76,6 @@ fun ArtSpace(modifier: Modifier = Modifier) {
         TextBox(R.string.subHeading)
 
         Spacer(Modifier.height(16.dp))
-
-//        ButtonRow()
 
         Row(
             modifier = Modifier
@@ -104,21 +100,6 @@ fun ArtSpace(modifier: Modifier = Modifier) {
     }
 }
 
-//@Composable
-//fun image(
-//    modifier: Modifier = Modifier,
-//) {
-//    Image(
-//        painter = painterResource(id = currentImage),
-//        contentDescription = null,
-//        modifier
-//            .clip(
-//                shape = RoundedCornerShape(16.dp)
-//            )
-//            .fillMaxWidth()
-//    )
-//}
-
 @Composable
 fun TextBox(
     @StringRes label: Int
@@ -134,44 +115,6 @@ fun TextBox(
         )
     }
 }
-
-//@Composable
-//public fun ButtonRow() {
-//    var currentImage by remember { mutableStateOf(1) }
-//
-//    var img = when (currentImage) {
-//        1 -> R.drawable.a__1_
-//        2 -> R.drawable.a__2_
-//        3 -> R.drawable.a__3_
-//        4 -> R.drawable.a__4_
-//        5 -> R.drawable.a__5_
-//        6 -> R.drawable.a__6_
-//        7 -> R.drawable.a__7_
-//        else -> R.drawable.pexels_james_wheeler_1598073
-//    }
-//
-//    Row(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .fillMaxWidth()
-//            .fillMaxHeight(),
-//        horizontalArrangement = Arrangement.Center
-//    ) {
-//        Button(onClick = { currentImage = (1..7).random() }) {
-//            Text(text = "Previous")
-//        }
-//
-//        Spacer(Modifier.width(16.dp))
-//
-//        Button(onClick = {
-//            currentImage - 1
-//        }) {
-//            Modifier.width(100.dp)
-//            Text(text = "Next")
-//        }
-//    }
-//}
-
 
 @Preview(showBackground = true)
 @Composable
